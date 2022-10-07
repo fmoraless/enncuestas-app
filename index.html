@@ -9,12 +9,26 @@
     <title>Encuestas App</title>
 </head>
 <body>
-    <main>
-        <div class="welcome-screen">
+    <main id="inquiry">
+        <div id="welcomescreen" class="welcome-screen">
             <h1>Encuestas App</h1>
-            <p>Encuestas App es una aplicación que te permite crear encuestas y enviarlas a tus amigos.</p>
-            <h3><span>Ingresa tu nombre de usuario para </span> <a href="#" class="btn">comenzar</a></h3>
+            <p class="subtitle">Encuestas App es una aplicación que te permite crear encuestas y ver las de tus amigos.</p>
+            <hr>
+            <h4><span>Ingresa tu nombre de usuario para </span>comenzar</h4>
+            <div class="form">
+                <input id="user_name" class="text" type="text" placeholder="Nombre de usuario" required>
+                <button id="btn_comenzar" class="btn-comenzar">Comenzar</button>
+            </div>
 
+            <a class="see-others" href="">ver encuestas de otros usuarios</a>
+        </div>
+        <div id="questionscreen" class="questionscreen">
+            <h3>Segun su opinión, ¿cual es el lenguaje mas demandado en 2022?</h3>
+            <ul class="question__awswers">
+                <li class="answer">Ruby</li>
+                <li class="awswer">Javascript</li>
+                <li class="awswer">PHP</li>
+            </ul>
         </div>
     </main>
 
