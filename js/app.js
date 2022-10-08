@@ -1,6 +1,7 @@
 let elQuestionScreen = document.getElementById("questionscreen")
 let elUserName = document.getElementById("user_name")
 let elWelcomeScr = document.getElementById("welcomescreen")
+let elScreenResult = document.getElementById("resultscreen")
 
 
 function getUser() {
@@ -35,9 +36,15 @@ function Encuesta() {
         elQuestionScreen.append(questionTitle)*/
 
 
-        console.log({'desde this showQuestion': 'esoty en showQuestion'})
+        console.log({'cant preguntas': this.questions.length})
         if (this.indexCurrentQuestion < this.questions.length) {
             this.questions[this.indexCurrentQuestion].getElement()
+        }else {
+            //elQuestionScreen.classList.add("hidden")
+             let elSelectedAnswer = document.querySelector(".answer")
+            console.log(elSelectedAnswer)
+            elSelectedAnswer.innerHTML = encuesta.counter
+            elScreenResult.style.display = "block"
         }
 
     }
@@ -60,18 +67,18 @@ function Question(title, answers) {
     }
     this.getElement = function() {
         let questionNumber = document.createElement("h2")
-        questionNumber.textContent = "Pregunta 1/3"
+        questionNumber.textContent = "Responda la siguiente pregunta"
         elQuestionScreen.append(questionNumber)
         let questionTitle = document.createElement("h3")
         questionTitle.textContent = this.title
         elQuestionScreen.append(questionTitle)
 
         let questionAnswers = document.createElement("ul")
-        questionAnswers.classList.add("question__awswers")
+        questionAnswers.classList.add("question__answers")
 
         this.answers.forEach((answer, index) => {
             let elAnswer = document.createElement("li")
-            elAnswer.classList.add("awswer")
+            elAnswer.classList.add("answer")
             elAnswer.textContent = answer
             elAnswer.id = index+1
             elAnswer.addEventListener("click", this.checkAnswer)
@@ -80,6 +87,11 @@ function Question(title, answers) {
 
         elQuestionScreen.append(questionAnswers)
     }
+    setTimeout(function() {
+        //elQuestionScreen.textContent = ''
+        encuesta.indexCurrentQuestion++
+        encuesta.showCurrentQuestion()
+    }, 1000)
 }
 
 let question1 = new Question(
